@@ -1,0 +1,5 @@
+{
+    "MONGO_URI": "mongodb://localhost:27017/SurveyKaro",
+    "JWT_SECRET": "+TN5WdjLx1VNn9hlsMPbXPmne7v/6tkoR4BrpkbKes8="
+  }
+  

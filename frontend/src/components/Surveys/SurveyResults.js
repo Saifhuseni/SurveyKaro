@@ -1,10 +1,23 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { Pie, Bar } from 'react-chartjs-2';
 import API from '../../services/api';
 import { AuthContext } from '../../context/AuthContext';
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+} from 'chart.js';
+
+ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);
 
 const SurveyResults = () => {
-  const { id } = useParams(); // surveyId
+  const { id } = useParams();
   const { user, isAuthenticated } = useContext(AuthContext);
   const [responses, setResponses] = useState([]);
   const [survey, setSurvey] = useState(null);
@@ -15,7 +28,6 @@ const SurveyResults = () => {
   const calculateSummary = (responses, questions) => {
     const summary = {};
 
-    // Initialize summary object with question details
     questions.forEach((question) => {
       if (question.questionType === 'single-choice' || question.questionType === 'multiple-choice') {
         summary[question._id] = {
@@ -34,7 +46,6 @@ const SurveyResults = () => {
       }
     });
 
-    // Calculate summary
     responses.forEach((response) => {
       response.answers.forEach((answer) => {
         const questionSummary = summary[answer.questionId];
@@ -56,14 +67,13 @@ const SurveyResults = () => {
               }
             });
           } else if (questionSummary.type === 'rating-scale') {
-            questionSummary.totalRating += parseFloat(answer.answer); // Ensure it's treated as a number
+            questionSummary.totalRating += parseFloat(answer.answer);
             questionSummary.count += 1;
           }
         }
       });
     });
 
-    // Calculate percentages for single-choice/multiple-choice and average for rating-scale
     Object.values(summary).forEach((questionSummary) => {
       if (questionSummary.type === 'single-choice' || questionSummary.type === 'multiple-choice') {
         const totalResponses = responses.length;
@@ -102,31 +112,57 @@ const SurveyResults = () => {
   useEffect(() => {
     fetchSurvey();
     fetchResults();
-    // eslint-disable-next-line
   }, [id]);
 
   useEffect(() => {
     if (survey && responses.length > 0) {
       calculateSummary(responses, survey.questions);
     }
-    // eslint-disable-next-line
   }, [survey, responses]);
 
   if (loading) return <p>Loading survey results...</p>;
   if (error) return <p>Error loading survey results.</p>;
 
+  const createChartData = (question) => {
+    return {
+      labels: question.options.map((option) => option.text),
+      datasets: [
+        {
+          label: '# of Responses',
+          data: question.options.map((option) => option.count),
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    };
+  };
+
   return (
     <div>
       <h2>Results for "{survey?.title}"</h2>
       
-      {/* Summary Section - only show if there are responses */}
       {responses.length > 0 && (
         <div style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
           <h2>Summary of Responses</h2>
           
-          <h4>Responses Recieved: {responses.length}</h4>
+          <h4>Responses Received: {responses.length}</h4>
           {Object.values(summary).map((question, index) => (
-            <div key={index} >
+            <div key={index}>
               <p><strong>{question.questionText}</strong></p>
               {question.type === 'single-choice' || question.type === 'multiple-choice' ? (
                 <ul>
@@ -139,6 +175,20 @@ const SurveyResults = () => {
               ) : question.type === 'rating-scale' ? (
                 <p>Average Rating: {question.averageRating} (from {question.count} response(s))</p>
               ) : null}
+
+              {/* Chart for single-choice (Pie chart) */}
+              {question.type === 'single-choice' && (
+                <div style={{ width: '300px', height: '300px', border: '2px solid #007bff', borderRadius: '8px', padding: '10px' }}>
+                  <Pie data={createChartData(question)} options={{ responsive: true, maintainAspectRatio: false }} />
+                </div>
+              )}
+
+              {/* Chart for multiple-choice (Bar chart) */}
+              {question.type === 'multiple-choice' && (
+                <div style={{ width: '300px', height: '300px', border: '2px solid #007bff', borderRadius: '8px', padding: '10px' }}>
+                  <Bar data={createChartData(question)} options={{ indexAxis: 'y', responsive: true, maintainAspectRatio: false }} />
+                </div>
+              )}
             </div>
           ))}
         </div>

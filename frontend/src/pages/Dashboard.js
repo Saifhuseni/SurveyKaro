@@ -15,23 +15,21 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className="dashboard-container"> {/* Add class name here */}
       <h2>Dashboard</h2>
       
       {/* Existing links */}
       <Link to="/create-survey">Create New Survey</Link>
-      <br />
       <Link to="/surveys">View Your Surveys</Link>
-      <br /><br />
 
       {/* Respond to Survey Link */}
       <button onClick={() => setShowSurveyInput(!showSurveyInput)}>
         Respond to a Survey
       </button>
-<br/><br/>
+
       {/* Conditionally render the input for surveyId */}
       {showSurveyInput && (
-        <div>
+        <div className="survey-input-container"> {/* Add class name for styling */}
           <input
             type="text"
             placeholder="Enter Survey ID"

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import API from '../../services/api';
+import '../../css/SurveyList.css'; // Import your CSS file
 
 const SurveyList = () => {
   const [surveys, setSurveys] = useState([]);
@@ -26,7 +27,7 @@ const SurveyList = () => {
   if (error) return <p>Error loading surveys.</p>;
 
   return (
-    <div>
+    <div className="container"> {/* Add the container class for styling */}
       <h2>Your Surveys</h2>
       {surveys.length === 0 ? (
         <p>No surveys created yet.</p>

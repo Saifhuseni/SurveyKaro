@@ -29,10 +29,12 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div className="login-container"> {/* Add class name here */}
       <h2>Login</h2>
       {errors.length > 0 &&
-        errors.map((error, index) => <p key={index} style={{ color: 'red' }}>{error.msg || error}</p>)}
+        errors.map((error, index) => (
+          <p key={index} className="error-message">{error.msg || error}</p> // Add class name for error
+        ))}
       <form onSubmit={onSubmit}>
         <input
           type="email"

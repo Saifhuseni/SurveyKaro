@@ -12,6 +12,7 @@ import SubmitResponse from './components/Surveys/SubmitResponse';
 import SurveyResults from './components/Surveys/SurveyResults';
 import PrivateRoute from './components/PrivateRoute';
 import UpdateSurvey from './components/Surveys/UpdateSurvey'; 
+import './css/styles.css';
 
 function App() {
   return (

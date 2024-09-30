@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import API from '../../services/api';
+import '../../css/SubmitResponse.css'; // Import your CSS file
 
 const SubmitResponse = () => {
   const { id } = useParams(); // surveyId
@@ -64,10 +65,12 @@ const SubmitResponse = () => {
   if (!survey) return <p>Loading survey...</p>;
 
   return (
-    <div>
+    <div className="container"> {/* Add the container class for styling */}
       <h2>Submit Response for "{survey.title}"</h2>
-      {errors.length > 0 &&
-        errors.map((error, index) => <p key={index} style={{ color: 'red' }}>{error.msg || error}</p>)}
+      {errors.length > 0 && 
+        errors.map((error, index) => (
+          <p key={index} style={{ color: 'red' }}>{error.msg || error}</p>
+        ))}
       {submitSuccess && <p style={{ color: 'green' }}>Response submitted successfully!</p>}
       <form onSubmit={handleSubmit}>
         {survey.questions.map((q, qIndex) => (

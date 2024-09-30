@@ -153,19 +153,19 @@ const SurveyResults = () => {
   };
 
   return (
-    <div>
-      <h2>Results for "{survey?.title}"</h2>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <h2 style={{ marginBottom: '20px' }}>Results for "{survey?.title}"</h2>
       
       {responses.length > 0 && (
-        <div style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-          <h2>Summary of Responses</h2>
+        <div style={{ border: '2px solid #0056b3', borderRadius: '8px', padding: '20px', marginBottom: '20px', backgroundColor: '#f9f9f9' }}>
+          <h2 style={{ marginBottom: '10px' }}>Summary of Responses</h2>
           
           <h4>Responses Received: {responses.length}</h4>
           {Object.values(summary).map((question, index) => (
-            <div key={index}>
+            <div key={index} style={{ marginBottom: '15px' }}>
               <p><strong>{question.questionText}</strong></p>
               {question.type === 'single-choice' || question.type === 'multiple-choice' ? (
-                <ul>
+                <ul style={{ paddingLeft: '20px' }}>
                   {question.options.map((option, oIndex) => (
                     <li key={oIndex}>
                       {option.text}: {option.count} response(s) ({option.percentage.toFixed(2)}%)
@@ -178,14 +178,14 @@ const SurveyResults = () => {
 
               {/* Chart for single-choice (Pie chart) */}
               {question.type === 'single-choice' && (
-                <div style={{ width: '300px', height: '300px', border: '2px solid #007bff', borderRadius: '8px', padding: '10px' }}>
+                <div style={{ width: '300px', height: '300px', border: '2px solid #007bff', borderRadius: '8px', padding: '10px', marginTop: '10px' }}>
                   <Pie data={createChartData(question)} options={{ responsive: true, maintainAspectRatio: false }} />
                 </div>
               )}
 
               {/* Chart for multiple-choice (Bar chart) */}
               {question.type === 'multiple-choice' && (
-                <div style={{ width: '300px', height: '300px', border: '2px solid #007bff', borderRadius: '8px', padding: '10px' }}>
+                <div style={{ width: '300px', height: '300px', border: '2px solid #007bff', borderRadius: '8px', padding: '10px', marginTop: '10px' }}>
                   <Bar data={createChartData(question)} options={{ indexAxis: 'y', responsive: true, maintainAspectRatio: false }} />
                 </div>
               )}
@@ -195,14 +195,14 @@ const SurveyResults = () => {
       )}
 
       {/* Detailed Individual Responses */}
-      <h3>Individual Responses</h3>
+      <h2 style={{ marginBottom: '20px' }}>Individual Responses</h2>
       {responses.length === 0 ? (
         <p>No responses yet.</p>
       ) : (
         responses.map((response, index) => (
-          <div key={index} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+          <div key={index} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px', borderRadius: '8px', backgroundColor: '#f9f9f9' }}>
             <p><strong>Respondent:</strong> {response.respondent ? response.respondent.username : 'Anonymous'}</p>
-            <ul>
+            <ul style={{ paddingLeft: '20px' }}>
               {response.answers.map((ans, aIndex) => (
                 <li key={aIndex}>
                   <strong>Question:</strong> {survey.questions.find(q => q._id === ans.questionId)?.questionText}

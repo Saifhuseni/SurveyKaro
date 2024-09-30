@@ -46,18 +46,18 @@ const SurveyDetails = () => {
   if (!survey) return <p>Survey not found.</p>;
 
   return (
-    <div>
-      <h2>{survey.title} [ {id} ]</h2>
-      <p>{survey.description}</p>
+    <div style={{ padding: '20px', maxWidth: '700px', margin: '0 auto', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)', backgroundColor: '#f9f9f9' }}>
+      <h2 style={{ textAlign: 'center', color: '#333' }}>{survey.title} [ {id} ]</h2>
+      <p style={{ fontStyle: 'italic', color: '#666' }}>{survey.description}</p>
       
-      <h3>Questions</h3>
-      <ul>
+      <h3 style={{ color: '#007BFF' }}>Questions</h3>
+      <ul style={{ listStyleType: 'none', padding: '0' }}>
         {survey.questions.map((q, index) => (
-          <li key={index}>
+          <li key={index} style={{ marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '3px', backgroundColor: '#fff' }}>
             <strong>{q.questionText}</strong>
             
             {q.questionType === 'single-choice' && (
-              <ul>
+              <ul style={{ paddingLeft: '20px' }}>
                 {q.options.map((option, oIndex) => (
                   <li key={oIndex}>{option}</li>
                 ))}
@@ -65,7 +65,7 @@ const SurveyDetails = () => {
             )}
 
             {q.questionType === 'multiple-choice' && (
-              <ul>
+              <ul style={{ paddingLeft: '20px' }}>
                 {q.options.map((option, oIndex) => (
                   <li key={oIndex}>{option}</li>
                 ))}
@@ -82,13 +82,17 @@ const SurveyDetails = () => {
       <br />
 
       {/* View Results Link */}
-      <Link to={`/surveys/${id}/results`}>View Results</Link>
+      <Link to={`/surveys/${id}/results`} style={{ textDecoration: 'none' }}>
+        <button style={{ backgroundColor: '#007BFF', color: 'white', border: 'none', padding: '10px 15px', borderRadius: '5px', cursor: 'pointer' }}>
+          View Results
+        </button>
+      </Link>
 
       <br/>
 
       {/* Add Update Survey Button */}
-      <Link to={`/surveys/${id}/update`}>
-        <button style={{ marginTop: '10px' }}>
+      <Link to={`/surveys/${id}/update`} style={{ textDecoration: 'none' }}>
+        <button style={{ marginTop: '10px', backgroundColor: '#28A745', color: 'white', border: 'none', padding: '10px 15px', borderRadius: '5px', cursor: 'pointer' }}>
           Update Survey
         </button>
       </Link>
@@ -96,10 +100,9 @@ const SurveyDetails = () => {
       <br />
 
       {/* Delete Survey Button */}
-      <button onClick={handleDelete} style={{ color: 'red', marginTop: '10px' }}>
+      <button onClick={handleDelete} style={{ color: 'white', marginTop: '10px', backgroundColor: 'red', border: 'none', padding: '10px 15px', borderRadius: '5px', cursor: 'pointer' }}>
         Delete Survey
       </button>
-
     </div>
   );
 };

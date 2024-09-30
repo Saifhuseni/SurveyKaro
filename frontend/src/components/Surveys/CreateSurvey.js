@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../../services/api';
+import '../../css/CreateSurvey.css';
 
 const CreateSurvey = () => {
   const navigate = useNavigate();
@@ -57,32 +58,36 @@ const CreateSurvey = () => {
   };
 
   return (
-    <div>
+    <div className="create-survey-container">
       <h2>Create Survey</h2>
-      {errors.length > 0 &&
-        errors.map((error, index) => (
-          <p key={index} style={{ color: 'red' }}>{error.msg || error}</p>
-        ))}
+      {errors.length > 0 && (
+        <div className="error-messages">
+          {errors.map((error, index) => (
+            <p key={index} className="error">{error.msg || error}</p>
+          ))}
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
+          className="survey-title"
           placeholder="Survey Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-        <br />
         <textarea
+          className="survey-description"
           placeholder="Survey Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
-        <br />
         <h3>Questions</h3>
         {questions.map((q, qIndex) => (
-          <div key={qIndex} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+          <div key={qIndex} className="question-container">
             <label>Question Type:</label>
             <select
+              className="question-type"
               value={q.questionType}
               onChange={(e) => handleQuestionChange(qIndex, 'questionType', e.target.value)}
             >
@@ -91,22 +96,22 @@ const CreateSurvey = () => {
               <option value="subjective">Subjective</option>
               <option value="rating-scale">Rating Scale</option>
             </select>
-            <br />
             <input
               type="text"
+              className="question-text"
               placeholder="Question Text"
               value={q.questionText}
               onChange={(e) => handleQuestionChange(qIndex, 'questionText', e.target.value)}
               required
             />
-            <br />
             {(q.questionType === 'single-choice' || q.questionType === 'multiple-choice') && (
-              <div>
+              <div className="options-container">
                 <h4>Options</h4>
                 {q.options.map((option, oIndex) => (
                   <div key={oIndex}>
                     <input
                       type="text"
+                      className="option-input"
                       placeholder={`Option ${oIndex + 1}`}
                       value={option}
                       onChange={(e) => handleOptionChange(qIndex, oIndex, e.target.value)}
@@ -114,15 +119,16 @@ const CreateSurvey = () => {
                     />
                   </div>
                 ))}
-                <button type="button" onClick={() => addOption(qIndex)}>Add Option</button>
+                <button type="button" className="add-option-button" onClick={() => addOption(qIndex)}>Add Option</button>
               </div>
             )}
-            <button type="button" onClick={() => deleteQuestion(qIndex)}>Delete Question</button>
+            <button type="button" className="delete-question-button" onClick={() => deleteQuestion(qIndex)}>Delete Question</button>
           </div>
         ))}
-        <button type="button" onClick={addQuestion}>Add Question</button>
-        <br />
-        <button type="submit">Create Survey</button>
+        <button type="button" className="add-question-button" onClick={addQuestion}>Add Question</button>
+        <div className="submit-button-container">
+          <button type="submit" className="submit-button">Create Survey</button>
+        </div>
       </form>
     </div>
   );

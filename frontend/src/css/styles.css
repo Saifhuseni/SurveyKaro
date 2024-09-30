@@ -1,0 +1,255 @@
+ /* Global Styles */
+ body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4 {
+    color: #007bff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #282c34;
+    padding: 1rem;
+  }
+  
+  nav a {
+    color: #61dafb;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  nav button {
+    background-color: #ff4757;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  nav button:hover {
+    background-color: #ff6b81;
+  }
+ 
+
+
+/* General styles for the login page */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto; /* Center the container */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+  }
+  
+  .login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .login-container form {
+    display: flex;
+    flex-direction: column; /* Arrange inputs vertically */
+  }
+  
+  .login-container input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .login-container input:focus {
+    border-color: #61dafb; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  .login-container button {
+    padding: 10px;
+    background-color: #61dafb; /* Button color */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .login-container button:hover {
+    background-color: #21a1f1; /* Darker button color on hover */
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+
+ 
+
+/* General styles for the registration page */
+.register-container {
+    max-width: 400px; /* Set a maximum width */
+    margin: 50px auto; /* Center the container */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+  }
+  
+  .register-container h2 {
+    text-align: center; /* Center the header */
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .register-container form {
+    display: flex;
+    flex-direction: column; /* Arrange inputs vertically */
+  }
+  
+  .register-container input {
+    padding: 10px;
+    margin-bottom: 15px; /* Space between inputs */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px; /* Font size for inputs */
+  }
+  
+  .register-container input:focus {
+    border-color: #61dafb; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  .register-container button {
+    padding: 10px;
+    background-color: #61dafb; /* Button color */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px; /* Font size for button */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .register-container button:hover {
+    background-color: #21a1f1; /* Darker button color on hover */
+  }
+  
+  .error-message {
+    color: red; /* Color for error messages */
+    font-size: 14px; /* Font size for error messages */
+    margin-bottom: 10px; /* Space below error messages */
+  }
+  
+
+
+/* styles.css */
+
+/* General styles for the dashboard */
+.dashboard-container {
+    max-width: 800px; /* Increased width for a spacious layout */
+    margin: 50px auto; /* Center the container */
+    padding: 30px; /* More padding for a better layout */
+    border-radius: 10px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
+    font-family: 'Arial', sans-serif; /* Font family */
+  }
+  
+  /* Header styles */
+  .dashboard-container h2 {
+    text-align: center; /* Center the header */
+    margin-bottom: 20px;
+    color: #333; /* Dark color for text */
+    font-size: 2rem; /* Larger font size */
+    border-bottom: 2px solid #61dafb; /* Underline effect */
+    padding-bottom: 10px; /* Space below the header */
+  }
+  
+  /* Link styles */
+  .dashboard-container a {
+    display: block; /* Display links as block elements */
+    margin: 15px 0; /* Space between links */
+    padding: 15px; /* More padding for better click area */
+    color: white; /* White text color */
+    background-color: #61dafb; /* Link background color */
+    text-align: center; /* Center text in the links */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .dashboard-container a:hover {
+    background-color: #21a1f1; /* Darker shade on hover */
+  }
+  
+  /* Button styles */
+  .dashboard-container button {
+    padding: 15px 20px; /* Padding for buttons */
+    background-color: #61dafb; /* Button color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    color: white; /* Button text color */
+    font-size: 16px; /* Font size for button */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Smooth transition */
+    margin-top: 10px; /* Space above button */
+    display: inline-block; /* Display as block for alignment */
+  }
+  
+  .dashboard-container button:hover {
+    background-color: #21a1f1; /* Darker button color on hover */
+  }
+  
+  /* Input container styles */
+  .survey-input-container {
+    margin-top: 20px; /* Space above input container */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center align items */
+  }
+  
+  /* Input styles */
+  .survey-input-container input {
+    padding: 15px; /* Padding for input */
+    margin-right: 10px; /* Space between input and button */
+    border: 1px solid #ccc; /* Border for input */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size for input */
+    width: 200px; /* Set a width for input */
+  }
+  
+  .survey-input-container input:focus {
+    border-color: #61dafb; /* Highlight border on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+

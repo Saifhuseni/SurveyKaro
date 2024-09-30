@@ -1,8 +1,7 @@
-// frontend/src/components/Surveys/UpdateSurvey.js
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import API from '../../services/api';
+import '../../css/UpdateSurvey.css'; 
 
 const UpdateSurvey = () => {
   const { id } = useParams(); // Survey ID from the URL
@@ -114,7 +113,7 @@ const UpdateSurvey = () => {
         {/* Survey Questions */}
         <h3>Questions</h3>
         {survey.questions.map((question, qIndex) => (
-          <div key={qIndex} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+          <div key={qIndex} className="question-container">
             <label>
               Question Type:
               <select
@@ -125,7 +124,6 @@ const UpdateSurvey = () => {
                 <option value="multiple-choice">Multiple Choice</option>
                 <option value="subjective">Subjective</option>
                 <option value="rating-scale">Rating Scale</option>
-                
               </select>
             </label>
             <br />
@@ -143,7 +141,7 @@ const UpdateSurvey = () => {
 
             {/* Options for choice-based questions */}
             {(question.questionType === 'single-choice' || question.questionType === 'multiple-choice') && (
-              <div>
+              <div className="options-container">
                 <h4>Options</h4>
                 {question.options.map((option, oIndex) => (
                   <div key={oIndex}>
@@ -159,27 +157,28 @@ const UpdateSurvey = () => {
                     />
                   </div>
                 ))}
-                <button type="button" onClick={() => addOption(qIndex)}>
+                <button type="button" className="add-question-button" onClick={() => addOption(qIndex)}>
                   Add Option
                 </button>
               </div>
             )}
 
             {/* Delete question button */}
-            <button type="button" onClick={() => deleteQuestion(qIndex)}>
+            <button type="button" className="delete-question-button" onClick={() => deleteQuestion(qIndex)}>
               Delete Question
             </button>
-
-            {/* Additional fields for other question types can be added here */}
           </div>
         ))}
 
-        <button type="button" onClick={addQuestion}>
+        <button type="button" className="add-question-button" onClick={addQuestion}>
           Add Question
         </button>
         <br /><br />
 
-        <button type="submit">Update Survey</button>
+        {/* Centered Update Survey Button */}
+        <div className="submit-button-container">
+          <button type="submit">Update Survey</button>
+        </div>
       </form>
     </div>
   );

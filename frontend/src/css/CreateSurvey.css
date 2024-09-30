@@ -1,0 +1,86 @@
+.create-survey-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.error-messages {
+    margin-bottom: 20px;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.survey-title,
+.survey-description,
+.question-text,
+.option-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.survey-title:focus,
+.survey-description:focus,
+.question-text:focus,
+.option-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.question-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #ffffff;
+}
+
+.question-type {
+    margin-bottom: 10px;
+}
+
+.add-option-button,
+.delete-question-button,
+.add-question-button,
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 5px 0; /* Space between buttons */
+    font-size: 16px;
+}
+
+.add-option-button:hover,
+.delete-question-button:hover,
+.add-question-button:hover,
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+h4 {
+    margin: 10px 0;
+    color: #555;
+}
+
+/* Centering the submit button */
+.submit-button-container {
+    text-align: center; /* Center the button */
+    margin-top: 20px; /* Add space above the button */
+}

@@ -44,9 +44,9 @@ button {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    padding: 5px 10px; /* Padding adjusted for text fit */
-    margin: 2px; /* Reduced space between buttons */
-    font-size: 14px; /* Font size adjustment */
+    padding: 5px 10px;
+    margin: 2px; 
+    font-size: 14px; 
 }
 
 button:hover {
@@ -55,8 +55,8 @@ button:hover {
 
 /* Centered submit button */
 .submit-button-container {
-    text-align: center; /* Center the button */
-    margin-top: 20px;  /* Space above the button */
+    text-align: center; 
+    margin-top: 20px;
     font-size: 20px;
     padding: 5px 10px;
 }

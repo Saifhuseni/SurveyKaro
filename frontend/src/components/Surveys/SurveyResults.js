@@ -120,6 +120,22 @@ const SurveyResults = () => {
     }
   }, [survey, responses]);
 
+  // Set the background image on component mount
+  useEffect(() => {
+    document.body.style.backgroundImage = 'url("https://img.freepik.com/premium-vector/blue-white-abstract-background-design-well-use-as-wallpaper-website-template-background_756251-43.jpg")';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.height = '100vh';
+
+    // Clean up the effect when the component is unmounted
+    return () => {
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+      document.body.style.height = '';
+    };
+  }, []);
+
   if (loading) return <p>Loading survey results...</p>;
   if (error) return <p>Error loading survey results.</p>;
 
@@ -154,7 +170,7 @@ const SurveyResults = () => {
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <h2 style={{ marginBottom: '20px' }}>Results for "{survey?.title}"</h2>
+      <h2 style={{ marginBottom: '20px',color:'black' }}>Results for "{survey?.title}"</h2>
       
       {responses.length > 0 && (
         <div style={{ border: '2px solid #0056b3', borderRadius: '8px', padding: '20px', marginBottom: '20px', backgroundColor: '#f9f9f9' }}>
@@ -195,7 +211,7 @@ const SurveyResults = () => {
       )}
 
       {/* Detailed Individual Responses */}
-      <h2 style={{ marginBottom: '20px' }}>Individual Responses</h2>
+      <h2 style={{ marginBottom: '20px',color:'black' }}>Individual Responses</h2>
       {responses.length === 0 ? (
         <p>No responses yet.</p>
       ) : (

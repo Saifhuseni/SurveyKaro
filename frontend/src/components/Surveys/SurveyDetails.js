@@ -41,6 +41,22 @@ const SurveyDetails = () => {
     }
   };
 
+  // Set the background image on component mount
+  useEffect(() => {
+    document.body.style.backgroundImage = 'url("https://img.freepik.com/premium-vector/blue-white-abstract-background-design-well-use-as-wallpaper-website-template-background_756251-43.jpg")';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.height = '100vh';
+
+    // Clean up the effect when the component is unmounted
+    return () => {
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+      document.body.style.height = '';
+    };
+  }, []);
+
   if (loading) return <p>Loading survey details...</p>;
   if (error) return <p>Error loading survey.</p>;
   if (!survey) return <p>Survey not found.</p>;

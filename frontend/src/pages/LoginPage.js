@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { login as loginService } from '../services/authService';
 
@@ -28,12 +28,28 @@ const LoginPage = () => {
     }
   };
 
+  // Set the background image on component mount
+  useEffect(() => {
+    document.body.style.backgroundImage = 'url("https://img.freepik.com/premium-vector/blue-white-abstract-background-design-well-use-as-wallpaper-website-template-background_756251-43.jpg")';
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.height = '100vh';
+
+    // Clean up the effect when the component is unmounted
+    return () => {
+      document.body.style.backgroundImage = '';
+      document.body.style.backgroundSize = '';
+      document.body.style.backgroundPosition = '';
+      document.body.style.height = '';
+    };
+  }, []);
+
   return (
-    <div className="login-container"> {/* Add class name here */}
+    <div className="login-container"> 
       <h2>Login</h2>
       {errors.length > 0 &&
         errors.map((error, index) => (
-          <p key={index} className="error-message">{error.msg || error}</p> // Add class name for error
+          <p key={index} className="error-message">{error.msg || error}</p>
         ))}
       <form onSubmit={onSubmit}>
         <input

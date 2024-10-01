@@ -1,0 +1,56 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .navbar {
+    background-color: #fff;
+    padding: 1em;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    padding: 10px;
+    color: #333;
+  }
+  
+  /* Hero Section */
+  .header-section {
+    padding: 5em 0;
+    background-color: #f9f9f9;
+  }
+  
+  .header-section h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+  }
+  
+  .header-section p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4em 0;
+  }
+  
+  .features-area {
+    display: flex;
+    gap: 1.5em;
+  }
+  
+  .feature-card {
+    background: #fff;
+    padding: 2em;
+    border: 1px solid #ddd;
+  }
+  
+  .primary-button {
+    background-color: #005eff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+  }
+  

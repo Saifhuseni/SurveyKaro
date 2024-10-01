@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; // Remove BrowserRouter
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Layout/Navbar';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
@@ -19,10 +19,11 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Public Routes */}
+        <Route path="/" element={<Home />} /> {/* Should always be accessible */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        
+
         {/* Protected Routes */}
         <Route
           path="/dashboard"
@@ -72,8 +73,6 @@ function App() {
             </PrivateRoute>
           }
         />
-
-
         <Route
           path="/surveys/:id/update"
           element={
@@ -82,9 +81,10 @@ function App() {
             </PrivateRoute>
           }
         />
-      
+
+        {/* Catch-all Route */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-     
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import API from '../../services/api';
-import '../../css/SubmitResponse.css'; // Import your CSS file
+import '../../css/SubmitResponse.css';
 
 const SubmitResponse = () => {
   const { id } = useParams(); // surveyId
@@ -113,6 +113,7 @@ const SubmitResponse = () => {
                     value={option}
                     checked={answers[qIndex].answer.includes(option)}
                     onChange={() => handleCheckboxChange(qIndex, option)}
+                    required
                   />
                   <label>{option}</label>
                 </div>
